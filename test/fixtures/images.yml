@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner_id: 1
+  is_shared: false
+  url: MyString
+  name: MyString
+  description: MyString
+
+two:
+  owner_id: 1
+  is_shared: false
+  url: MyString
+  name: MyString
+  description: MyString
