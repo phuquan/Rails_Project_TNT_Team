@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   get 'static_pages/home'
 
   get 'users/show'
-
+  
+  get 'signup' => 'users#sign_up'
+  get 'login' => 'users#sign_in'
+  get 'forgot' => 'users#password#new'
+  
+  
   devise_for :users
   resources :images
   # The priority is based upon order of creation: first created -> highest priority.
