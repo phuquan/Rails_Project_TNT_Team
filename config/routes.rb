@@ -6,10 +6,13 @@ Rails.application.routes.draw do
 
   get 'users/show'
   
-  get 'signup' => 'users#sign_up'
-  get 'login' => 'users#sign_in'
-  get 'forgot' => 'users#password#new'
+  devise_scope :user do
+    get 'signup' => 'devise/registrations#new'
+    get 'login' => "devise/sessions#new"
+    get 'forgot' => 'devise/passwords#new'
   
+    delete 'logout' => 'users#sign_out'
+  end
   
   devise_for :users
   resources :images
