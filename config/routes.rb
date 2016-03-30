@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'signup' => 'devise/registrations#new'
     get 'login' => "devise/sessions#new"
     get 'forgot' => 'devise/passwords#new'
+    get 'update_profile' => 'devise/registrations#edit'
   
     delete 'logout' => 'users#sign_out'
   end
