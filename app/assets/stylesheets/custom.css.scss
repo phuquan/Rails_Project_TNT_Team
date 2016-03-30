@@ -52,6 +52,18 @@ h2 {
     color: $gray-light;
 }
 
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+}
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+
 p{
     font-size: 1.1em;
     line-height: 1.7em;
@@ -172,9 +184,9 @@ input {
 
 .checkbox {
   margin-top: -10px;
+  margin-left: 20px;
   margin-bottom: 10px;
   span {
-    margin-left: 20px;
     font-weight: normal;
   }
 }
