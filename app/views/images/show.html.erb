@@ -1,4 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+ 
+    <strong>File:</strong>
+    <%= @image.inspect %>
+    <%= image_tag @image.url %>
+</p>
+
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>
