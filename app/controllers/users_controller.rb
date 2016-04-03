@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     @users = User.paginate(page: params[:page])
   end
 
+  def home
+    
+  end
+
   def show
   	@user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
@@ -79,5 +83,4 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
-
 end

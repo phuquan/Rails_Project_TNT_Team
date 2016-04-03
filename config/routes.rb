@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'static_pages/help'
 
   get 'users/show'
+
+  get 'users/home'
   
   devise_scope :user do
     get 'signup' => 'devise/registrations#new'
