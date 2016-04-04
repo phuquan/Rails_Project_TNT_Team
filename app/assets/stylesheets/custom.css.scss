@@ -8,6 +8,15 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+/* miscellaneous */
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
 body{
     padding-top: 60px;
     padding-left: 30px;
@@ -160,7 +169,8 @@ aside {
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   margin-bottom: 15px;
-  
+  width: 100%;
+  @include box_sizing;
 }
 
 input {
