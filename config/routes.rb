@@ -4,12 +4,15 @@ Rails.application.routes.draw do
   
   get 'static_pages/home'
 
+  get 'static_pages/help'
+
   get 'users/show'
   
   devise_scope :user do
     get 'signup' => 'devise/registrations#new'
     get 'login' => "devise/sessions#new"
     get 'forgot' => 'devise/passwords#new'
+    get 'update_profile' => 'devise/registrations#edit'
   
     delete 'logout' => 'users#sign_out'
   end

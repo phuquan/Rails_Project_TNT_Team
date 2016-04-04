@@ -7,5 +7,4 @@ class User < ActiveRecord::Base
   has_many :images
   has_many :follows
   has_many :comments
-  
 end
