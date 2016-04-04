@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
   get 'static_pages/help'
 
-  get 'users/show'
+  get 'users/:id' => 'users#show'
+  get 'users' => 'users#index'
+  
+  resources :users, only: [:show, :index]
   
   devise_scope :user do
     get 'signup' => 'devise/registrations#new'
@@ -19,6 +22,7 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :images
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
