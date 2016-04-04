@@ -1,5 +1,8 @@
 class StaticPagesController < ApplicationController
+	
+  before_action :authenticate_user!
+
   def home
-  	@images = Image.all()
+  	@images = current_user.images
   end
 end

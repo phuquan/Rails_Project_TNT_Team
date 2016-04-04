@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20160327040648) do
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "owner_id"
+    t.integer  "user_id"
     t.integer  "image_id"
     t.string   "context"
     t.datetime "created_at", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20160327040648) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.integer  "owner_id"
+    t.integer  "user_id"
     t.boolean  "is_shared"
     t.string   "url"
     t.string   "name"

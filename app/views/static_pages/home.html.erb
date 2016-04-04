@@ -14,36 +14,45 @@
 <!-- Page Content -->
 <div class="container home-content">
 
-    <% for i in 0..3 %>
-        <!-- Projects Row -->
+    <% i = 0 %>
+    <% while i < @images.size %>
+        <!-- Each row has maximum of two images -->
         <div class="row">
+            <% first_image = @images[i] %>
             <div class="col-md-6 portfolio-item">
                 <a href="#">
                     <img class="img-responsive" src="http://wallpoper.com/images/00/29/00/44/women-vietnam_00290044.jpg" alt="">
                 </a>
                 <div>
                 	<h3>
-                    	<a href="#">Project One</a>
+                    	<a href="#"><%= first_image.name %></a>
                 	</h3>
 
-                	<h4>Posted by <a href="#">me</a> at Monday, 26th of June</h4> 
+                	<h4>Posted by <a href="#">me</a> at <%= first_image.created_at %></h4> 
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                <p><%= first_image.description %></p>
             </div>
+
+            <% if (i + 1 < @images.size) %>
+            <% second_image = @images[i + 1] %>
             <div class="col-md-6 portfolio-item">
                 <a href="#">
                     <img class="img-responsive" src="http://wallpoper.com/images/00/29/00/44/women-vietnam_00290044.jpg" alt="">
                 </a>
-                <h3>
-                    <a href="#">Project Two</a>
-                </h3>
-                <h4>Posted by <a href="#">me</a> at Monday, 26th of June</h4> 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                <div>
+                    <h3>
+                        <a href="#"><%= second_image.name %></a>
+                    </h3>
+
+                    <h4>Posted by <a href="#">me</a> at <%= second_image.created_at %></h4> 
+                </div>
+                <p><%= second_image.description %></p>
             </div>
+            <% end %>
+            <% i += 2 %>
         </div>
         <!-- /.row -->
     <% end %>
-
 
     <hr>
 
