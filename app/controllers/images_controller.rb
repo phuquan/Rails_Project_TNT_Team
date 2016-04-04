@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :new, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, only: [:index, :create]
 
   # GET /images
   # GET /images.json
@@ -26,7 +27,7 @@ class ImagesController < ApplicationController
   # POST /images.json
   def create
     @image = Image.new(image_params)
-    @image.owner_id  = current_user.id
+    @image.user_id  = current_user.id
     respond_to do |format|
       if @image.save
         format.html { redirect_to @image, notice: 'Image was successfully created.' }

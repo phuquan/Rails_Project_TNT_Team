@@ -22,4 +22,6 @@
 
 <br>
 
-<%= link_to 'New Image', new_image_path %>
+<%= link_to 'New Image', new_image_path, remote: true, class: "btn btn-primary" %>
+
+<%= render 'dialog' %>

@@ -17,7 +17,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'will_paginate',  '>=3.0.7'
 gem 'bootstrap-will_paginate', '>=0.0.10'
-gem 'bootstrap-sass', '>=3.2.0.0'
+gem 'bootstrap-sass', '~> 3.3.3'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -1,4 +1,4 @@
-<%= form_for(@image, html:{ multipart: true }) do |f| %>
+<%= form_for(@image, remote: true, html:{ multipart: true }, :html => { :role => "form" }) do |f| %>
   <% if @image.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
@@ -10,28 +10,26 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label 'ネーム' %><br>
-    <%= f.text_field :name %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label '描写' %><br>
-    <%= f.text_area :description %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label '画像' %><br>
-    <%= f.file_field :url %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.check_box :is_shared %>
-    <%= f.label '画像をシェアしてもよろしいでしょうか？' %>
-  </div>
-  <br>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= f.label :name, :class => 'control-label' %>
+        <%= f.text_field :name, :class => 'form-control first_input' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description, :class => 'control-label' %>
+        <%= f.text_area :description, :class => 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.file_field :url, :class => 'btn btn-default btn-file' %>
+      </div>
+      <div class="form-group">
+        <%= f.check_box :is_shared %>
+        <%= f.label :is_shared, :class => 'control-label' %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Create image', :class => 'btn btn-primary' %>
+      </div>
+    </div>
   </div>
 <% end %>
