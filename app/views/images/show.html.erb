@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p><%= @image.user.email %></p>
+<%= image_tag @image.url %>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>
