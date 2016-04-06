@@ -1,8 +1,8 @@
 class CreateImageTags < ActiveRecord::Migration
   def change
     create_table :image_tags do |t|
-      t.integer :image_id
-      t.integer :tag_id
+      t.references :image, index: true, foreign_key: true
+      t.references :tag, index: true, foreign_key: true
 
       t.timestamps null: false
     end

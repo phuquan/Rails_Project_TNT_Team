@@ -12,8 +12,7 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
-    @tags = ImageTag.where(image_id: @image.id)
-    byebug
+    @tags = Tag.joins(:image_tags).where(image_id: @image.id)
   end
 
   # GET /images/new
@@ -30,30 +29,24 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     @image.user_id  = current_user.id
-    tag_id = 0
-    
-    delete_all_tag(@image.id)
-    
-    tags = params[:image][:tag]
-    tags = tags.split(',')
-    tags.each do |tag|
-      @tag = Tag.find_by(name: tag)
-      if @tag == nil
-        @tag = Tag.new
-        @tag.name = tag
-        @tag.save
-        tag_id = @tag.id
-      else
-        tag_id = @tag.id
-      end
-    end
-    
+
     respond_to do |format|
       if @image.save
-        @image_tag = ImageTag.new
-        @image_tag.image_id = @image.id
-        @image_tag.tag_id = tag_id
-        @image_tag.save
+        delete_all_tag(@image.id)
+        tags = params[:image][:tag]
+        tags = tags.split(',')
+        tags.each do |tag|
+          @tag = Tag.find_by(name: tag)
+          if @tag == nil
+            @tag = Tag.new
+            @tag.name = tag
+            @tag.save
+          end
+          @image_tag = ImageTag.new
+          @image_tag.image_id = @image.id
+          @image_tag.tag_id = @tag.id
+          @image_tag.save
+        end
         format.html { redirect_to @image, notice: 'Image was successfully created.' }
         format.json { render :show, status: :created, location: @image }
       else
