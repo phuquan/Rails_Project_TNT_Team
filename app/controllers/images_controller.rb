@@ -44,6 +44,7 @@ class ImagesController < ApplicationController
         delete_all_tag(@image.id)
         tags = params[:image][:tag]
         tags = tags.split(',')
+        tags = tags.uniq
         tags.each do |tag|
           @tag = Tag.find_by(name: tag)
           if @tag == nil
@@ -73,6 +74,7 @@ class ImagesController < ApplicationController
         delete_all_tag(@image.id)
         tags = params[:image][:tag]
         tags = tags.split(',')
+        tags = tags.uniq
         tags.each do |tag|
           @tag = Tag.find_by(name: tag)
           if @tag == nil
