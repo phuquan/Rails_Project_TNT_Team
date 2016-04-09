@@ -7,7 +7,11 @@
           <li><%= link_to "Home", static_pages_home_path %></li>
         <% end %>
         <% if user_signed_in? %>
+<<<<<<< HEAD
           <li><%= link_to "Users", update_profile_path %></li>
+=======
+          <li><%= link_to "Users", users_path %></li>
+>>>>>>> e4eafb46808c933bb21d494f41f0457ca040952e
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>
