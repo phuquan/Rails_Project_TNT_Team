@@ -14,20 +14,6 @@
 <!-- Page Content -->
 <div class="container home-content">
 
-<% if user_signed_in? %>
-    <div class="row">
-        <aside class="col-md-4">
-            <section class="user_info">
-                <%= render 'shared/user_info' %>
-            </section>
-            <section class="stats">
-                <%= render 'shared/stats' %>
-            </section>
-        </aside>
-    </div>
-
-<% end %>
-
     <% for i in 0..3 %>
         <!-- Projects Row -->
         <div class="row">
