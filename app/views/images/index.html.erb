@@ -1,25 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Images</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @images.each do |image| %>
-      <tr>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image), remote: true %></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="container masonry-wrapper">
+			
+		<div id="projects-container" class="masonry" style="visibility: visible;position: relative;height: <%= @height%>px;width: 1160px;">
+			    <%
+			    index = 0
+			    %>
+			    <% @images.each do |image| %>
+			    <%
+			    top = (index / 3) * 303;
+			    left = 790
+			    if ((index + 1) % 3) == 1
+			      left = 0
+			    end
+			    if ((index + 1) % 3) == 2
+			      left = 395
+			    end
+			    index += 1
+			    %>
+			      <article class="project-item illustration masonry-brick" style="position: absolute; top: <%= top %>px; left:<%= left %>px;">
+						
+  						<%= image_tag image.url, class: "img-responsive project-image" %>
+  						<div class="hover-mask">
+  							<h2 class="project-title">Designer World</h2><!--Project Title -->
+  							<p>illustration</p><!--Project Subtitle -->
+  						</div>
+			      </article>
+			   <% end %>
+	</div><!-- End projects --> 
+				
+</div>
+  
 <br>
 
 <%= link_to 'New Image', new_image_path, remote: true, class: "btn btn-primary" %>

@@ -7,6 +7,7 @@ class ImagesController < ApplicationController
   # GET /images.json
   def index
     @images = Image.all
+    @height = (@images.size / 3) * 303
   end
 
   # GET /images/1
