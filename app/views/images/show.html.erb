@@ -4,5 +4,5 @@
 <%= image_tag @image.url %><br>
 <%= @tags %>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Edit', edit_image_path(@image), remote: true, class: "btn btn-primary" %> |
 <%= link_to 'Back', images_path %>

@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :new, :update, :destroy]
-  skip_before_filter :verify_authenticity_token, only: [:index, :create]
+  skip_before_filter :verify_authenticity_token, only: [:index, :create, :update]
 
   # GET /images
   # GET /images.json
@@ -22,6 +22,15 @@ class ImagesController < ApplicationController
 
   # GET /images/1/edit
   def edit
+    @tags = ImageTag.joins(:tag).select(:name).where(image_id: @image.id)
+    if @tags != nil
+      tags = "";
+      for tag in @tags
+        tags += tag.name + ",";
+      end
+      tags = tags[0...-1]
+      @tags = tags
+    end
   end
 
   # POST /images
@@ -61,6 +70,21 @@ class ImagesController < ApplicationController
   def update
     respond_to do |format|
       if @image.update(image_params)
+        delete_all_tag(@image.id)
+        tags = params[:image][:tag]
+        tags = tags.split(',')
+        tags.each do |tag|
+          @tag = Tag.find_by(name: tag)
+          if @tag == nil
+            @tag = Tag.new
+            @tag.name = tag
+            @tag.save
+          end
+          @image_tag = ImageTag.new
+          @image_tag.image_id = @image.id
+          @image_tag.tag_id = @tag.id
+          @image_tag.save
+        end
         format.html { redirect_to @image, notice: 'Image was successfully updated.' }
         format.json { render :show, status: :ok, location: @image }
       else
