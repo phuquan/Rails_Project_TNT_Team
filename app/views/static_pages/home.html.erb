@@ -1,95 +1,59 @@
-<% provide(:title, 'Home') %>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Mountain King - Bootstrap Template</title>
+		
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700,100' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Raleway:300,700,900,500' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.7/typicons.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        </script>
+    </head>
+    <body class="home-body">
 
-<div class="search-container">    
- 	<div class="search-box">
- 		<form >
-    		<div class="input-group search-input">
-       			<input type="text" class="form-control" placeholder="Search by picture name or by tags">
-    		</div>
- 		</form>
- 	</div>	
-</div> 
-
-
-<!-- Page Content -->
-<div class="container home-content">
-
-<!-- <% if user_signed_in? %>
-    <div class="row">
-        <aside class="col-md-4">
-            <section class="user_info">
-                <%= render 'shared/user_info' %>
-            </section>
-            <section class="stats">
-                <%= render 'shared/stats' %>
-            </section>
-        </aside>
-    </div>
-
-<% end %> -->
-
-    <% for i in 0..3 %>
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-6 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://wallpoper.com/images/00/29/00/44/women-vietnam_00290044.jpg" alt="">
-                </a>
-                <div>
-                	<h3>
-                    	<a href="#">Project One</a>
-                	</h3>
-
-                	<h4>Posted by <a href="#">me</a> at Monday, 26th of June</h4> 
+        <header id="home">
+            <div class="container-fluid">
+                <!-- change the image in style.css to the class header .container-fluid [approximately row 50] -->
+				<div class="jumbotron">
+					<h1><small>Welcome to the world of the most</small></br>
+					<strong>BEAUTIFUL GIRLS</strong></h1>
+					<p>on Earth.<br>View, share millions of pretty pictures for FREE.<br>Share now and make your day.</p>
+					<p>				
+						<a target="_self" href="/signup" class="btn btn-primary btn-lg home-button" role="button">SIGN UP</a> 
+						<a target="_self" href="/login" class="btn btn-lg btn-danger  home-button" role="button">LOGIN</a>
+					</p>
+				</div>
+            </div>
+        </header>
+        <section id="feat">
+            <div class="container">
+                <div class="row features">
+                    <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="100ms">
+                        <span class="typcn typcn-pencil x3"></span>
+                        <h4>Consectetur Risus</h4>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    </div>
+                    <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="300ms">
+                        <span class="typcn typcn-camera-outline x3"></span>
+                        <h4>Ultricies Aenean</h4>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    </div>
+                    <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="500ms">
+                        <span class="typcn typcn-bookmark x3"></span>
+                        <h4>Cras Sollicitudin</h4>
+                        <p>Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum.</p>
+                    </div>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>
-            <div class="col-md-6 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://wallpoper.com/images/00/29/00/44/women-vietnam_00290044.jpg" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Two</a>
-                </h3>
-                <h4>Posted by <a href="#">me</a> at Monday, 26th of June</h4> 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-        </div>
-        <!-- /.row -->
-    <% end %>
-
-
-    <hr>
-
-    <!-- Pagination -->
-    <div class="row text-center">
-        <div class="col-lg-12">
-            <ul class="pagination">
-                <li>
-                    <a href="#">&laquo;</a>
-                </li>
-                <li class="active">
-                    <a href="#">1</a>
-                </li>
-                <li>
-                    <a href="#">2</a>
-                </li>
-                <li>
-                    <a href="#">3</a>
-                </li>
-                <li>
-                    <a href="#">4</a>
-                </li>
-                <li>
-                    <a href="#">5</a>
-                </li>
-                <li>
-                    <a href="#">&raquo;</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- /.row -->
-
-</div>
-<!-- /.container -->
+        </section>
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap-scrollspy.js"></script>
+        <script src="http://masonry.desandro.com/masonry.pkgd.js"></script>
+    </body>
+</html>
