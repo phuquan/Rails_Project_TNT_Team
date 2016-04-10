@@ -1,3 +1,99 @@
+<% if user_signed_in? %>
+<link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<%= stylesheet_link_tag 'bootstrap-image-gallery.min.css', media: 'all', 'data-turbolinks-track' => true %>
+
+<% provide(:title, 'Home') %>
+
+<div class="search-container">    
+ 	<div class="search-box">
+ 		<form >
+    		<div class="input-group search-input">
+       			<input type="text" class="form-control" placeholder="Search by picture name or by tags">
+    		</div>
+ 		</form>
+ 	</div>	
+</div> 
+
+
+<!-- Page Content -->
+<div class="container home-content">
+
+    <div class="row">
+        <aside class="col-md-4">
+            <section class="user_info">
+                <%= render 'shared/user_info' %>
+            </section>
+            <section class="stats">
+                <%= render 'shared/stats' %>
+            </section>
+        </aside>
+    </div>
+
+    <div id="links">
+<%
+	index = 0;
+	@images.each do |image| %>
+	<%
+		if ((index + 1) % 4) == 1
+	%>
+	<div class = "row" style="padding: 5px;">
+	<%
+		end
+		index += 1
+	%>
+	<div class="col-lg-3">
+	   <a href="<%=image.url%>" title="<%= image.name %>" class="image_element" id="<%= image.id %>" data-gallery>
+	      <img src="<%= image.url %>" width="280px" height="280px">
+	   </a>
+	 </div>
+	  <%
+		if ((index + 1) % 4) == 1
+	%>
+	</div>
+	<%
+	  end
+	%>
+<%
+	end
+%>
+<%= render 'imagedialog' %>
+</div>
+
+    <hr>
+
+    <!-- Pagination -->
+    <div class="row text-center">
+        <div class="col-lg-12">
+            <ul class="pagination">
+                <li>
+                    <a href="#">&laquo;</a>
+                </li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li>
+                    <a href="#">5</a>
+                </li>
+                <li>
+                    <a href="#">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /.row -->
+
+
+</div>
+<% else %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,11 +147,9 @@
                         <p>Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- Bootstrap core JavaScript
-    ================================================== -->
-        <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap-scrollspy.js"></script>
-        <script src="http://masonry.desandro.com/masonry.pkgd.js"></script>
-    </body>
-</html>
+            </div>  
+<!-- /.container -->
+<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<%= javascript_include_tag 'bootstrap-image-gallery.js', 'data-turbolinks-track' => false %>
+
+<% end %>
