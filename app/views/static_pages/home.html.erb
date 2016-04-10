@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<%= stylesheet_link_tag 'bootstrap-image-gallery.min.css', media: 'all', 'data-turbolinks-track' => true %>
+
 <% provide(:title, 'Home') %>
 
 <div class="search-container">    
@@ -27,37 +30,35 @@
     </div>
 
 <% end %>
-
-    <% for i in 0..3 %>
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-6 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://wallpoper.com/images/00/29/00/44/women-vietnam_00290044.jpg" alt="">
-                </a>
-                <div>
-                	<h3>
-                    	<a href="#">Project One</a>
-                	</h3>
-
-                	<h4>Posted by <a href="#">me</a> at Monday, 26th of June</h4> 
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-            <div class="col-md-6 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://wallpoper.com/images/00/29/00/44/women-vietnam_00290044.jpg" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Two</a>
-                </h3>
-                <h4>Posted by <a href="#">me</a> at Monday, 26th of June</h4> 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-        </div>
-        <!-- /.row -->
-    <% end %>
-
+    <div id="links">
+<%
+	index = 0;
+	@images.each do |image| %>
+	<%
+		if ((index + 1) % 4) == 1
+	%>
+	<div class = "row" style="padding: 5px;">
+	<%
+		end
+		index += 1
+	%>
+	<div class="col-lg-3">
+	   <a href="<%=image.url%>" title="<%= image.name %>" class="image_element" id="<%= image.id %>" data-gallery>
+	      <img src="<%= image.url %>" width="280px" height="280px">
+	   </a>
+	 </div>
+	  <%
+		if ((index + 1) % 4) == 1
+	%>
+	</div>
+	<%
+	  end
+	%>
+<%
+	end
+%>
+<%= render 'imagedialog' %>
+</div>
 
     <hr>
 
@@ -105,3 +106,5 @@
 
 </div>
 <!-- /.container -->
+<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<%= javascript_include_tag 'bootstrap-image-gallery.js', 'data-turbolinks-track' => false %>

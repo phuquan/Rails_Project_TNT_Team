@@ -59,7 +59,10 @@
         })
         modal.addClass('in')
       }, factoryInterface)
-      modal.find('.modal-title').text(element.title || String.fromCharCode(160))
+      var src = element.src
+      var image_id = src.split("/url/")[1].substr(0,2);
+      var title = '<a href="/images/'+ image_id+'">'+ element.title +'</a>';
+      modal.find('.modal-title').append(title)
       modal.find('.modal-body').append(element)
       return modal[0]
     },
