@@ -233,11 +233,24 @@ input {
 
 .checkbox {
   margin-top: -10px;
-  margin-left: 20px;
   margin-bottom: 10px;
   span {
     font-weight: normal;
   }
+}
+
+.form-control.introduction{
+  height: 500px;
+}
+
+.date-select.form-control {
+  width: 30%;
+  margin-right: 10px;
+  float: left;
+}
+.date-select { 
+    display: inline-block;
+    width: 30%;
 }
 
 #session_remember_me {
