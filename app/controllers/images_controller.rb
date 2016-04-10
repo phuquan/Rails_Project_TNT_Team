@@ -39,7 +39,6 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     @image.user_id  = current_user.id
-
     respond_to do |format|
       if @image.save
         delete_all_tag(@image.id)
@@ -61,7 +60,7 @@ class ImagesController < ApplicationController
         format.html { redirect_to @image, notice: 'Image was successfully created.' }
         format.json { render :show, status: :created, location: @image }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end
