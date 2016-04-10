@@ -1,27 +1,48 @@
+<!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<%= stylesheet_link_tag 'bootstrap-image-gallery.min.css', media: 'all', 'data-turbolinks-track' => true %>
+
+<div class="container">
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Images</h1>
+<h1 class="big-text text-center scrollimation fade-in in">Listing Image</h1>
+<%= link_to 'New Image', new_image_path, remote: true, class: "btn btn-primary" %><br>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @images.each do |image| %>
-      <tr>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image), remote: true %></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div id="links">
+<%
+	index = 0;
+	@images.each do |image| %>
+	<%
+		if ((index + 1) % 4) == 1
+	%>
+	<div class = "row" style="padding: 5px;">
+	<%
+		end
+		index += 1
+	%>
+	<div class="col-lg-3">
+	   <a href="<%=image.url%>" title="<%= image.name %>" class="image_element" id="<%= image.id %>" data-gallery>
+	      <img src="<%= image.url %>" width="280px" height="280px">
+	   </a>
+	 </div>
+	  <%
+		if ((index + 1) % 4) == 1
+	%>
+	</div>
+	<%
+	  end
+	%>
+<%
+	end
+%>
+</div>
 <br>
-
-<%= link_to 'New Image', new_image_path, remote: true, class: "btn btn-primary" %>
-
+<% @images.each do |image| %>
+<%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%end%>
 <%= render 'dialog' %>
+<%= render 'imagedialog' %>
+</div>
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<%= javascript_include_tag 'bootstrap-image-gallery.js', 'data-turbolinks-track' => false %>
