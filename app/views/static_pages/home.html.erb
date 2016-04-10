@@ -23,10 +23,12 @@
 					<h1><small>Welcome to the world of the most</small></br>
 					<strong>BEAUTIFUL GIRLS</strong></h1>
 					<p>on Earth.<br>View, share millions of pretty pictures for FREE.<br>Share now and make your day.</p>
+					<% if !user_signed_in? %>
 					<p>				
 						<a target="_self" href="/signup" class="btn btn-primary btn-lg home-button" role="button">SIGN UP</a> 
 						<a target="_self" href="/login" class="btn btn-lg btn-danger  home-button" role="button">LOGIN</a>
 					</p>
+					<% end %>
 				</div>
             </div>
         </header>
