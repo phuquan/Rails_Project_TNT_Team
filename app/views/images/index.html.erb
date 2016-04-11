@@ -6,7 +6,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1 class="big-text text-center scrollimation fade-in in">Listing Image</h1>
-<%= link_to 'New Image', new_image_path, remote: true, class: "btn btn-primary" %><br>
 
 <div id="links">
 <%
@@ -21,9 +20,14 @@
 		index += 1
 	%>
 	<div class="col-lg-3">
-	   <a href="<%=image.url%>" title="<%= image.name %>" class="image_element" id="<%= image.id %>" data-gallery>
-	      <img src="<%= image.url %>" width="280px" height="280px">
-	   </a>
+		<div class="row">
+		   <a href="<%=image.url%>" title="<%= image.name %>" class="image_element" id="<%= image.id %>" data-gallery>
+		      <img src="<%= image.url %>" width="280px" height="280px">
+		   </a>
+	   </div>
+	   <div class="row">
+	   		Posted by <a href="/users/<%= image.user_id %>"><%= image.user.email %></a> at <%= image.created_at.strftime("%I:%M%p") + " on " + image.created_at.strftime(" %Y/%m/%d") %>
+	   </div>
 	 </div>
 	  <%
 		if ((index + 1) % 4) == 1

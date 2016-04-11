@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'comments/create'
+
+  get 'comments/destroy'
+
   root 'static_pages#home'
   
   get 'static_pages/home'
@@ -33,7 +37,6 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
   
-  get 'comments' => 'comments#create'
   resources :comments
 end
   
