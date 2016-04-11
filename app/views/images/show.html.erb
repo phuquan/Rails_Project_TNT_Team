@@ -1,8 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p><%= @image.user.email %></p>
-<%= image_tag @image.url %><br>
-<%= @tags %>
+<div class="container">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <h2 style="float:left;text-style:bold">★ <%= @image.name %></h2>
+                </div>
+                <div class="row">
+                    <p><%= @image.description %></p>
+                </div>
+            </div>
+            <div class="col-md-3" style="background-color:floralwhite;">
+                <section class="user_info">
+                    <p style="font-size:12px">Posted at <%= @image.created_at.strftime("%I:%M%p") + " on " + @image.created_at.strftime(" %Y/%m/%d") %> by</p>
+                    <!--<div class="row">-->
+                        <span class="col-sm-6"><%= link_to gravatar_for(current_user, size: 50), current_user %></span>
+                        <h3><%= link_to current_user.name, current_user %></h3>
+                    <!--</div>-->
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-success" style="background-color:ghostwhite;text-align: center;">
+                <div class="panel-body"><%= image_tag @image.url %></div>
+             </div>
+        </div>
+        <div class="row">
+        </div>
+    </div>
+    <div class="col-lg-4">
+        
+    </div>
+</div>
 
 <%= link_to 'Edit', edit_image_path(@image), remote: true, class: "btn btn-primary" %> |
 <%= link_to 'Back', images_path %>

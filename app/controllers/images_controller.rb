@@ -14,6 +14,8 @@ class ImagesController < ApplicationController
   # GET /images/1.json
   def show
     @tags = Tag.joins(:image_tags).where(image_id: @image.id)
+    @comments = @image.comments
+    @new_comment = @image.comments.new
   end
 
   # GET /images/new

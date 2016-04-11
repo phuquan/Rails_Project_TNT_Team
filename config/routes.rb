@@ -32,7 +32,9 @@ Rails.application.routes.draw do
     end
 
   resources :relationships, only: [:create, :destroy]
-
+  
+  get 'comments' => 'comments#create'
+  resources :comments
 end
   
   # The priority is based upon order of creation: first created -> highest priority.
