@@ -16,7 +16,12 @@
                     <p style="font-size:12px">Posted at <%= @image.created_at.strftime("%I:%M%p") + " on " + @image.created_at.strftime(" %Y/%m/%d") %> by</p>
                     <!--<div class="row">-->
                         <span class="col-sm-6"><%= link_to gravatar_for(current_user, size: 50), current_user %></span>
-                        <h3><%= link_to current_user.name, current_user %></h3>
+                        <h3> <% if(current_user.name != nil) %>
+                                <%= link_to current_user.name, current_user %>
+                            <% else %>
+                                <%= link_to "No name", current_user %>
+                            <% end %>
+                        </h3>
                     <!--</div>-->
                 </section>
             </div>
@@ -26,17 +31,14 @@
                 <div class="panel-body"><%= image_tag @image.url %></div>
              </div>
         </div>
-        <div class="comment-list">
-            
-        </div>
         <div class="row" id="comment-count">
             
         </div>
         <div class="row" id="comment-form">
-            
-        </div>
-        <div class="row">
             <%= render 'comments/form' %>
+        </div>
+        <div class="row" id="comment-list">
+            <%= render 'comments/comment' %>
         </div>
     </div>
     <div class="col-lg-4">
