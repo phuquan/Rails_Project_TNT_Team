@@ -13,7 +13,8 @@ class UsersController < ApplicationController
   end
   
   def search
-	@images = Image.search(params[:query], current_user.id)
+	  #@images = Image.search(params[:query], current_user.id)
+    @images = Image.where("name LIKE ? and user_id = ?", "%#{params[:query]}%", "#{current_user.id}")
   end
 
   def edit
