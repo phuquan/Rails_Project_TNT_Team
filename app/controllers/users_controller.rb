@@ -11,6 +11,10 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
   end
+  
+  def search
+	@images = Image.search(params[:query], current_user.id)
+  end
 
   def edit
   	@user = User.find(params[:id])
@@ -29,6 +33,7 @@ class UsersController < ApplicationController
       @users = @user.followers.paginate(page: params[:page])
       render 'show_follow'
     end
+
 
     # private
     def user_params

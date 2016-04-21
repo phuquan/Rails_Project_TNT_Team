@@ -3,4 +3,8 @@ class Image < ActiveRecord::Base
     has_many :tags
     has_many :comments
     belongs_to :user
+	
+	def search(query, user_id) 
+		Image.where("name LIKE ? and user_id = ?", "%#{query}%", "#{user_id}")
+	end
 end
