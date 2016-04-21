@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
+  end
 
   resources :relationships, only: [:create, :destroy]
 
@@ -89,4 +90,3 @@ end
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
