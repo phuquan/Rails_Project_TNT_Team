@@ -14,6 +14,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    comment = Comment.find(params[:id])
+    image = comment.image
+    comment.destroy
+    redirect_to image
   end
   
   private

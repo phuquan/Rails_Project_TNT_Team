@@ -1,14 +1,19 @@
 <% @comments.each do |comment| %>
   <% if(comment.user != nil) %>
-  <div class="row">
+  <div class="row"  style="margin-top: 5px; margin-bottom: 5px;background-color: aliceblue;">
     <div class="col-md-1">
       <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
     </div>
     <div class="col-md-11">
       <div class="row">
         <span><%= (comment.user.name != nil)? comment.user.name : "No name" %></span>
-        <% if(current_user.email == comment.user.email) %>
-          <!--<%= link_to 'Destroy', [comment, comment.image], method: :delete, data: { confirm: 'Are you sure?' } %>-->
+        <% if(current_user == comment.user) %>
+        <span style="margin: 5px;">
+          <%= comment.created_at.to_formatted_s(:short)%>
+        </span>
+        <span style="float: right;">
+          <%= link_to "delete", comment, method: :delete,  data: { confirm: "You sure?" } %>
+        </span>
         <% end %>
       </div>
       <div class="row">

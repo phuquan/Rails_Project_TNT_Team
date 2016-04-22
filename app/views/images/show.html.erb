@@ -42,9 +42,19 @@
         </div>
     </div>
     <div class="col-lg-4">
-        
+        <% @relative_images.each do |item| %>
+            <div class="row">
+                <div class="col-md-4">
+                    <%= image_tag item.image.url, :size => "100x100" %>
+                </div>
+                <div class="col-md-8">
+                    <a href="/images/<%= item.image.id %>" style="font-size: large;"><%= item.image.name %></a>
+                    <p><%= item.image.description %></p>
+                    <span>Posted by <a href="/users/<%= item.image.user.id %>"><%= item.image.user.name == nil ? item.image.user.email : item.image.user.name %></a></span>
+                    <p>at <%= item.image.created_at.to_formatted_s(:short)%></p>
+                </div>
+            </div>
+        <% end %>
     </div>
 </div>
 
-<%= link_to 'Edit', edit_image_path(@image), remote: true, class: "btn btn-primary" %> |
-<%= link_to 'Back', images_path %>

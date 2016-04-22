@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
   
-  get 'comments/create'
-
-  get 'comments/destroy'
-
   root 'static_pages#home'
   
   get 'static_pages/home'
@@ -35,10 +31,13 @@ Rails.application.routes.draw do
       get :following, :followers
     end
 
-  resources :relationships, only: [:create, :destroy]
+    resources :relationships, only: [:create, :destroy]
+  
+    resources :comments
+  end
   
   resources :comments
-end
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
