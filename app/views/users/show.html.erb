@@ -11,6 +11,7 @@
               <div class="text-center">
                 <%= gravatar_for @user %>
                 <h3><%= @user.name %></h3>
+                <%= render 'follow_form' %>
               </div>
             </li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span><%= @user.created_at.strftime("%d-%b-%Y") %></li>
