@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   
   get 'users/:id' => 'users#show'
   get 'users' => 'users#index'
+  get 'search' => 'users#search'
   
   resources :users, only: [:show, :index]
 
