@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   
   get 'users/:id' => 'users#show'
   get 'users' => 'users#index'
+  get 'search' => 'users#search'
   
   resources :users, only: [:show, :index]
 
@@ -30,10 +31,14 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
+  end
 
-  resources :relationships, only: [:create, :destroy]
-
+    resources :relationships, only: [:create, :destroy]
+  
+    resources :comments
 end
+  
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -89,4 +94,3 @@ end
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end

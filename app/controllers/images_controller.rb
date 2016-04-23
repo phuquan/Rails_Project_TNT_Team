@@ -13,7 +13,14 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
-    @tags = Tag.joins(:image_tags).where(image_id: @image.id)
+    @tags = ImageTag.joins(:tag).where(image_id: @image.id)
+    @comments = @image.comments
+    @new_comment = @image.comments.build
+    tag_ids = Array.new
+    for tag in @tags
+      tag_ids << tag.tag_id
+    end
+    @relative_images = ImageTag.joins(:image).where(:tag_id => tag_ids).where.not(image_id: @image.id)
   end
 
   # GET /images/new

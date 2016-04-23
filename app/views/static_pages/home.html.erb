@@ -8,7 +8,9 @@
  	<div class="search-box">
  		<form >
     		<div class="input-group search-input">
-       			<input type="text" class="form-control" placeholder="Search by picture name or by tags">
+       			<%= form_tag(search_path, :method => "get", id: "search-form") do %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search by image name", class: 'form-control' %>
+                <% end %>
     		</div>
  		</form>
  	</div>	
@@ -43,13 +45,25 @@
 	%>
 	<div class="col-lg-3">
 		<div class="row">
+<<<<<<< HEAD
 		   <a href="<%=image.url%>" title="<%= image.name %>" class="image_element" id="<%= image.id %>" data-gallery>
 		      <img src="<%= image.url %>" width="280px" height="280px">
 		   </a>
+=======
+			<div class="row">
+		   <a href="/images/<%= image.id %>" title="<%= image.name %>" class="image_element" id="<%= image.id %>" data-gallery>
+			      <img src="<%= image.url %>" width="280px" height="280px">
+			   </a>
+>>>>>>> c437bc2303926131cfc01a2b3e453e460e496b9f
 	   </div>
 	   <div class="row">
 	   		Posted by <a href="/users/<%= image.user_id %>"><%= image.user.email %></a> at <%= image.created_at.strftime("%I:%M%p") + " on " + image.created_at.strftime(" %Y/%m/%d") %>
 	   </div>
+<<<<<<< HEAD
+=======
+	   </div>
+	   
+>>>>>>> c437bc2303926131cfc01a2b3e453e460e496b9f
 	 </div>
 	  <%
 		if ((index + 1) % 4) == 1
@@ -61,8 +75,13 @@
 <%
 	end
 %>
+<<<<<<< HEAD
 <%= render 'imagedialog' %>
     </div>
+=======
+
+</div>
+>>>>>>> c437bc2303926131cfc01a2b3e453e460e496b9f
 
     <hr>
 

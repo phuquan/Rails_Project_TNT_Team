@@ -1,0 +1,103 @@
+<% provide(:title, 'Result') %>
+
+<div class="search-container">    
+ 	<div class="search-box">
+ 		<form >
+    		<div class="input-group search-input">
+       			<input type="text" class="form-control" placeholder="Search by picture name or by tags">
+    		</div>
+ 		</form>
+ 	</div>	
+</div> 
+
+
+<!-- Page Content -->
+<div class="container home-content">
+
+    <% i = 0 %>
+    <% while i < @images.size %>
+        <!-- Each row has maximum of two images -->
+        <div class="row">
+            <% first_image = @images[i] %>
+            <div class="col-md-6 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="<%=first_image.url%>" alt="">
+                </a>
+                <div>
+                	<h3>
+                    	<a href="#"><%= first_image.name %></a>
+                	</h3>
+
+                	<h4>Posted by <a href="#">me</a> at <%= first_image.created_at %></h4> 
+                </div>
+                <p><%= first_image.description %></p>
+            </div>
+
+            <% if (i + 1 < @images.size) %>
+            <% second_image = @images[i + 1] %>
+            <div class="col-md-6 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="<%=second_image.url%>" alt="">
+                </a>
+                <div>
+                    <h3>
+                        <a href="#"><%= second_image.name %></a>
+                    </h3>
+
+                    <h4>Posted by <a href="#">me</a> at <%= second_image.created_at %></h4> 
+                </div>
+                <p><%= second_image.description %></p>
+            </div>
+            <% end %>
+            <% i += 2 %>
+        </div>
+        <!-- /.row -->
+    <% end %>
+
+
+    <hr>
+
+    <!-- Pagination --
+    <div class="row text-center">
+        <div class="col-lg-12">
+            <ul class="pagination">
+                <li>
+                    <a href="#">&laquo;</a>
+                </li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li>
+                    <a href="#">5</a>
+                </li>
+                <li>
+                    <a href="#">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    -- /.row -->
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; Your Website 2014</p>
+            </div>
+        </div>
+        <!-- /.row -->
+    </footer>
+
+</div>
+<!-- /.container -->
