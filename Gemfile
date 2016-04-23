@@ -20,6 +20,7 @@ gem 'will_paginate',  '>=3.0.7'
 gem 'bootstrap-will_paginate', '>=0.0.10'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'mini_magick'
+gem "font-awesome-rails"
 
 # To build with Windows
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
