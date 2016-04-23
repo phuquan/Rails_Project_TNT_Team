@@ -1,0 +1,3 @@
+var comments_list = $('#comment-list');
+comments_list.append('<%= escape_javascript(render partial: 'comments/item', locals: {comment: @comment}) %>');
+$('#comment-val-form').val("");
