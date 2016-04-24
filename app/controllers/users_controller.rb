@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+	@shared_images = Image.where("user_id = ? ", "#{params[:id]}")
   end
   
   def search
