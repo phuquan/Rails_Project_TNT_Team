@@ -1,10 +1,10 @@
 <%= form_for(@new_comment) do |f| %>
-  <div class="field">
+  <div class="field" style="margin-left: 10px; margin-right: 10px; margin-bottom: 10px;">
     <%= f.text_area :context, class: "form-control col-lg-8", id: "comment-val-form", placeholder: "Provide comment here." %>
     <%= f.hidden_field :image_id, :value => @image.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
   <div class="actions">
-    <%= f.submit "Leave Comment", :class => 'btn btn-primary' %>
+    <%= f.submit "Post comment", :class => 'btn btn-primary comment-button' %>
   </div>
 <% end %>
