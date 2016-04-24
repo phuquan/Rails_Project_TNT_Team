@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @images = Image.where(user_id: current_user.id)
     @height = (@images.size / 3) * 303
   end
 
@@ -20,7 +20,7 @@ class ImagesController < ApplicationController
     for tag in @tags
       tag_ids << tag.tag_id
     end
-    @relative_images = ImageTag.joins(:image).where(:tag_id => tag_ids).where.not(image_id: @image.id)
+    @relative_images = ImageTag.uniq.joins(:image).where(:tag_id => tag_ids).where.not(image_id: @image.id)
   end
 
   # GET /images/new

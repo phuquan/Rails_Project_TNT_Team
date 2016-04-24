@@ -1,23 +1,23 @@
 <% @comments.each do |comment| %>
   <% if(comment.user != nil) %>
-  <div class="row"  style="margin-top: 5px; margin-bottom: 5px;background-color: aliceblue;">
+  <div class="row"  style="margin-top: 5px; margin-bottom: 5px;background-color: aliceblue;box-shadow: 1px 1px 2px 1px #888888 !important;margin:2px;margin-top: 10px;padding:5px">
     <div class="col-md-1">
       <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
     </div>
     <div class="col-md-11">
       <div class="row">
-        <span><%= (comment.user.name != nil)? comment.user.name : "No name" %></span>
+        <span style="float:left;"><%= (comment.user.name != nil)? comment.user.name : "No name" %></span>
         <% if(current_user == comment.user) %>
-        <span style="margin: 5px;">
+        <span style="margin: 5px;float:right">
           <%= comment.created_at.to_formatted_s(:short)%>
-        </span>
-        <span style="float: right;">
-          <%= link_to "delete", comment, method: :delete,  data: { confirm: "You sure?" } %>
         </span>
         <% end %>
       </div>
       <div class="row">
-        <span><%= comment.context %></span>
+        <span style="float:left"><%= comment.context %></span>
+        <span style="float: right;">
+          <%= link_to "delete", comment, method: :delete,  data: { confirm: "You sure?" } %>
+        </span>
       </div>
     </div>
   </div>

@@ -2,40 +2,25 @@
 
 <div class="container">
     <div class="col-lg-8">
-        <!--div class="row">
-            <div class="col-md-9">
-                <div class="row">
-                    <h2 style="float:left;text-style:bold"><%= @image.name %></h2>
-                </div>
-				<div class="row">
-					
-				</div>
-            </div>
-        </div>
-            <div class="col-md-3" style="background-color:floralwhite;">
-                <section class="user_info">
-                    <p style="font-size:12px">Posted at <%= @image.created_at.strftime("%I:%M%p") + " on " + @image.created_at.strftime(" %Y/%m/%d") %> by</p>
-                        <span class="col-sm-6"><%= link_to gravatar_for(current_user, size: 50), current_user %></span>
-                        <h3> <% if(current_user.name != nil) %>
-                                <%= link_to current_user.name, current_user %>
-                            <% else %>
-                                <%= link_to "No name", current_user %>
-                            <% end %>
-                        </h3>
-                </section>
-            </div-->
 		
         <div class="row">
             <div class="image-panel" >
-				<div>
-                    <p class="image-name-detail"><%= @image.name %></p>
-									
-					<p class="user-name-detail"> by<% if(current_user.name != nil) %>
-                                <%= link_to current_user.name, current_user %>
-                            <% else %>
-                                <%= link_to "No name", current_user %>
-                            <% end %> at <%= @image.created_at.strftime("%I:%M%p") + ", " + @image.created_at.strftime(" %Y/%m/%d") %>
-                    </p>
+				<div class="row">
+				    <div class="col-md-10">
+                        <p class="image-name-detail"><%= @image.name %></p>
+    									
+    					<p class="user-name-detail"> by<% if(current_user.name != nil) %>
+                                    <%= link_to current_user.name, current_user %>
+                                <% else %>
+                                    <%= link_to "No name", current_user %>
+                                <% end %> at <%= @image.created_at.strftime("%I:%M%p") + ", " + @image.created_at.strftime(" %Y/%m/%d") %>
+                        </p>
+                    </div>
+                    <div class="col-md-2" style="float:right;margin-top: 10px;">
+                        <% if(current_user.id == @image.user_id) %>
+                            <%= link_to 'Destroy', @image, method: :delete, data: { confirm: 'Are you sure?' } %>
+                        <% end %>
+                    </div>
 				</div>
                 <div class="panel-body custom-panel-body"><%= image_tag @image.url %></div>
 				<p class="image-description-detail"><%=@image.description%></p>
@@ -53,13 +38,13 @@
     </div>
     <div class="col-lg-4">
         <% @relative_images.each do |item| %>
-            <div class="row">
+            <div class="row" style="box-shadow: 1px 1px 2px 1px #888888 !important;margin:2px;margin-top: 10px;">
                 <div class="col-md-4">
                     <%= image_tag item.image.url, :size => "100x100" %>
                 </div>
                 <div class="col-md-8">
                     <a href="/images/<%= item.image.id %>" style="font-size: large;"><%= item.image.name %></a>
-                    <p><%= item.image.description %></p>
+                    <p><%= item.image.description.size > 10 ? item.image.description[0..10] + '...' : item.image.description %></p>
                     <span>Posted by <a href="/users/<%= item.image.user.id %>"><%= item.image.user.name == nil ? item.image.user.email : item.image.user.name %></a></span>
                     <p>at <%= item.image.created_at.to_formatted_s(:short)%></p>
                 </div>
