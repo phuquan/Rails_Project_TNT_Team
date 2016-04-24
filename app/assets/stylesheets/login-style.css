@@ -92,9 +92,9 @@ img { max-width: 100%; }
 
 /***** Top content *****/
 
-body {
+.login-body {
 	padding: 0 !important;
-	margin: 0;
+	margin-top: 50px;
 }
 
 .inner-bg {
